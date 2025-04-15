@@ -1,16 +1,37 @@
 // server.js
 const express = require('express');
 const bodyParser = require('body-parser');
-const TelegramBot = require('node-telegram-bot-api');
-require('dotenv').config();
+// const TelegramBot = require('node-telegram-bot-api');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Token va bot yaratish
-require('dotenv').config();
-const token = process.env.BOT_TOKEN;
+require('dotenv').config(); // .env faylini yuklash
+
+const TelegramBot = require('node-telegram-bot-api');
+const token = process.env.BOT_TOKEN; // .env faylidan tokenni olish
+
+if (!token) {
+  console.log("Bot tokeni mavjud emas!");
+  process.exit(1); // Token topilmasa serverni to'xtatish
+}
+
 const bot = new TelegramBot(token, { polling: true });
+
+bot.onText(/\/start/, (msg) => {
+  const chatId = msg.chat.id;
+  bot.sendMessage(chatId, 'Xush kelibsiz! Yordam bera olishim uchun so‘rov yuboring.');
+});
+
+
+// const bot = new TelegramBot(token, { polling: true });
+
+bot.onText(/\/start/, (msg) => {
+  const chatId = msg.chat.id;
+  bot.sendMessage(chatId, 'Xush kelibsiz! Yordam bera olishim uchun so‘rov yuboring.');
+});
+
 
 // Kanalga xabar yuborish uchun chat_id
 const channelChatId = '@defend_korrupsiya';

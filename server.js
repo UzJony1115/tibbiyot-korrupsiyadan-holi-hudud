@@ -17,21 +17,8 @@ if (!token) {
   process.exit(1); // Token topilmasa serverni to'xtatish
 }
 
+
 const bot = new TelegramBot(token, { polling: true });
-
-bot.onText(/\/start/, (msg) => {
-  const chatId = msg.chat.id;
-  bot.sendMessage(chatId, 'Xush kelibsiz! Yordam bera olishim uchun so‘rov yuboring.');
-});
-
-
-// const bot = new TelegramBot(token, { polling: true });
-
-bot.onText(/\/start/, (msg) => {
-  const chatId = msg.chat.id;
-  bot.sendMessage(chatId, 'Xush kelibsiz! Yordam bera olishim uchun so‘rov yuboring.');
-});
-
 
 // Kanalga xabar yuborish uchun chat_id
 const channelChatId = '@defend_korrupsiya';

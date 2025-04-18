@@ -26,8 +26,7 @@ const channelChatId = '@defend_korrupsiya';
 app.use(bodyParser.json());
 
 const replyKeyboard = [
-    ['Murojaat yuborish 📝'],
-    ['👉 Bizning kanal 👈']
+    ['Murojaat yuborish 📝']
 ];
 
 let userStates = {}; // Foydalanuvchi holatlarini saqlash
@@ -84,10 +83,6 @@ bot.on('message', async (msg) => {
         });
     }
 
-    if (text === '👉 Bizning kanal 👈') {
-        return bot.sendMessage(chatId, '🌐 Bizning kanalimiz: @defend_korrupsiya');
-    }
-
     if (state.step === 'text' && text) {
         state.text = text;
         state.step = 'photo';
@@ -128,7 +123,7 @@ bot.on('callback_query', async (query) => {
         if (state.photo) await bot.sendPhoto(channelChatId, state.photo, { caption: "Rasm ilova qilindi." });
         if (state.video) await bot.sendVideo(channelChatId, state.video, { caption: "Video ilova qilindi." });
 
-        await bot.sendMessage(chatId, `✅ Murojaatingiz yuborildi.`, {
+        await bot.sendMessage(chatId, `✅ Murojaatingiz yuqori tashkilotlarga yuborildi.`, {
             reply_markup: {
                 keyboard: replyKeyboard,
                 resize_keyboard: true

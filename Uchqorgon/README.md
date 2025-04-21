@@ -1,1 +1,0 @@
-# tibbiyot-korrupsiyadan-holi-hudud
